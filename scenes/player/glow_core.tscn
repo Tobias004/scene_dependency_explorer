@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[node name="GlowCore" type="Node2D"]
+
+[node name="Emission" type="ColorRect" parent="."]
+offset_left = -7.0
+offset_top = -5.0
+offset_right = 7.0
+offset_bottom = 5.0
+color = Color(1, 0.52, 0.15, 1)

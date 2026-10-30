@@ -1,0 +1,114 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world/terrain.tscn" id="1_terrain"]
+[ext_resource type="PackedScene" path="res://scenes/player/aircraft.tscn" id="2_aircraft"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="3_hud"]
+[ext_resource type="PackedScene" path="res://scenes/ui/settings_panel.tscn" id="4_settings"]
+[ext_resource type="PackedScene" path="res://scenes/ui/developer_console.tscn" id="5_console"]
+
+[node name="Main" type="Node2D"]
+
+[node name="SessionServices" type="Node" parent="."]
+
+[node name="Startup" type="Node" parent="SessionServices"]
+
+[node name="Configuration" type="Node" parent="SessionServices/Startup"]
+
+[node name="FeatureFlags" type="Node" parent="SessionServices/Startup"]
+
+[node name="PlatformProfile" type="Node" parent="SessionServices/Startup"]
+
+[node name="ServiceRegistry" type="Node" parent="SessionServices"]
+
+[node name="EventRouter" type="Node" parent="SessionServices/ServiceRegistry"]
+
+[node name="SaveDataCache" type="Node" parent="SessionServices/ServiceRegistry"]
+
+[node name="Diagnostics" type="Node" parent="SessionServices"]
+
+[node name="LogCollector" type="Node" parent="SessionServices/Diagnostics"]
+
+[node name="PerformanceCounters" type="Node" parent="SessionServices/Diagnostics"]
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="WorldSystems" type="Node2D" parent="World"]
+
+[node name="WorldClock" type="Node" parent="World/WorldSystems"]
+
+[node name="SpawnRegistry" type="Node" parent="World/WorldSystems"]
+
+[node name="SectorStreaming" type="Node" parent="World/WorldSystems"]
+
+[node name="ObjectPooling" type="Node" parent="World/WorldSystems"]
+
+[node name="Environment" type="Node2D" parent="World"]
+
+[node name="WeatherController" type="Node2D" parent="World/Environment"]
+
+[node name="WindSettings" type="Node" parent="World/Environment/WeatherController"]
+
+[node name="FogSettings" type="Node" parent="World/Environment/WeatherController"]
+
+[node name="DayNightCycle" type="Node2D" parent="World/Environment"]
+
+[node name="LightProfiles" type="Node" parent="World/Environment/DayNightCycle"]
+
+[node name="Terrain" parent="World/Environment" instance=ExtResource("1_terrain")]
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="PlayerSystems" type="Node2D" parent="Player"]
+
+[node name="InputMapping" type="Node" parent="Player/PlayerSystems"]
+
+[node name="FlightTuning" type="Node" parent="Player/PlayerSystems"]
+
+[node name="TargetSelection" type="Node" parent="Player/PlayerSystems"]
+
+[node name="DamageSignals" type="Node" parent="Player/PlayerSystems"]
+
+[node name="CameraTargets" type="Node2D" parent="Player"]
+
+[node name="Aircraft" parent="Player" instance=ExtResource("2_aircraft")]
+position = Vector2(550, 300)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="UILayout" type="Control" parent="UI"]
+
+[node name="SafeAreas" type="Control" parent="UI/UILayout"]
+
+[node name="ScreenMargins" type="Control" parent="UI/UILayout"]
+
+[node name="FocusManager" type="Node" parent="UI"]
+
+[node name="ThemeManager" type="Node" parent="UI"]
+
+[node name="NotificationBus" type="Node" parent="UI"]
+
+[node name="HUD" parent="UI" instance=ExtResource("3_hud")]
+
+[node name="Controls" type="Node" parent="UI"]
+
+[node name="FocusRules" type="Node" parent="UI/Controls"]
+
+[node name="KeyboardShortcuts" type="Node" parent="UI/Controls"]
+
+[node name="InputValidation" type="Node" parent="UI/Controls"]
+
+[node name="SettingsPanel" parent="UI/Controls" instance=ExtResource("4_settings")]
+position = Vector2(840, 145)
+
+[node name="DeveloperConsole" parent="UI" instance=ExtResource("5_console")]
+position = Vector2(20, 560)
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Buses" type="Node" parent="Audio"]
+
+[node name="MusicChannel" type="Node" parent="Audio/Buses"]
+
+[node name="EffectsChannel" type="Node" parent="Audio/Buses"]
+
+[node name="Mixer" type="Node" parent="Audio"]

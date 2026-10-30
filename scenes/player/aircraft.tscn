@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/player/exterior.tscn" id="1_exterior"]
+[ext_resource type="PackedScene" path="res://scenes/player/engine_pod.tscn" id="2_engine"]
+
+[node name="Aircraft" type="Node2D"]
+
+[node name="AircraftState" type="Node" parent="."]
+
+[node name="FlightModel" type="Node" parent="AircraftState"]
+
+[node name="LiftParameters" type="Node" parent="AircraftState/FlightModel"]
+
+[node name="DragParameters" type="Node" parent="AircraftState/FlightModel"]
+
+[node name="WeaponSettings" type="Node" parent="AircraftState"]
+
+[node name="HealthSignals" type="Node" parent="AircraftState"]
+
+[node name="MainFrame" type="Node2D" parent="."]
+
+[node name="Fuselage" type="ColorRect" parent="MainFrame"]
+offset_left = -85.0
+offset_top = -14.0
+offset_right = 85.0
+offset_bottom = 14.0
+color = Color(0.75, 0.78, 0.83, 1)
+
+[node name="MeshRoot" type="Node2D" parent="."]
+
+[node name="RenderSettings" type="Node" parent="MeshRoot"]
+
+[node name="MaterialOverrides" type="Node" parent="MeshRoot/RenderSettings"]
+
+[node name="VisibilityLayers" type="Node" parent="MeshRoot/RenderSettings"]
+
+[node name="Exterior" parent="MeshRoot" instance=ExtResource("1_exterior")]
+
+[node name="CameraRig" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="CameraRig"]
+enabled = false
+
+[node name="Propulsion" type="Node2D" parent="."]
+
+[node name="EngineController" type="Node2D" parent="Propulsion"]
+
+[node name="ThrottleCurve" type="Node" parent="Propulsion/EngineController"]
+
+[node name="FuelDistribution" type="Node" parent="Propulsion/EngineController"]
+
+[node name="LeftEngine" parent="Propulsion" instance=ExtResource("2_engine")]
+position = Vector2(-45, 34)
+
+[node name="RightEngine" parent="Propulsion" instance=ExtResource("2_engine")]
+position = Vector2(45, 34)
+
+[node name="LocalImplementationNode" type="Node2D" parent="."]

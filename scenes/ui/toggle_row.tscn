@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[node name="ToggleRow" type="Control"]
+offset_right = 260.0
+offset_bottom = 29.0
+mouse_filter = 2
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 260.0
+offset_bottom = 29.0
+color = Color(0.16, 0.23, 0.31, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 250.0
+offset_bottom = 27.0
+text = "Instanced toggle row"

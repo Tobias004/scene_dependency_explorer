@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/ui/status_chip.tscn" id="1_chip"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 400.0
+offset_bottom = 84.0
+mouse_filter = 2
+
+[node name="HudSystems" type="Node" parent="."]
+
+[node name="StateBindings" type="Node" parent="HudSystems"]
+
+[node name="PlayerStats" type="Node" parent="HudSystems/StateBindings"]
+
+[node name="MissionStatus" type="Node" parent="HudSystems/StateBindings"]
+
+[node name="NotificationQueue" type="Node" parent="HudSystems"]
+
+[node name="HeaderBackground" type="ColorRect" parent="."]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 255.0
+offset_bottom = 78.0
+color = Color(0.09, 0.12, 0.16, 0.93)
+
+[node name="HeaderLabel" type="Label" parent="."]
+offset_left = 22.0
+offset_top = 18.0
+offset_right = 230.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 18
+text = "Scene Dependency Test"
+
+[node name="Widgets" type="Control" parent="."]
+
+[node name="WidgetLayout" type="Control" parent="Widgets"]
+
+[node name="UpdateThrottle" type="Node" parent="Widgets"]
+
+[node name="StatusChip" parent="Widgets" instance=ExtResource("1_chip")]
+position = Vector2(21, 48)

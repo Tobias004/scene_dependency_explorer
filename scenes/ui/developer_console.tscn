@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[node name="DeveloperConsole" type="Control"]
+offset_right = 565.0
+offset_bottom = 65.0
+mouse_filter = 2
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 565.0
+offset_bottom = 65.0
+color = Color(0.07, 0.09, 0.12, 0.95)
+
+[node name="Message" type="Label" parent="."]
+offset_left = 12.0
+offset_top = 6.0
+offset_right = 550.0
+offset_bottom = 59.0
+text = "Scene architecture demo (no scripts, no gameplay)\nOpen the Scene Dependencies dock to inspect nesting."
